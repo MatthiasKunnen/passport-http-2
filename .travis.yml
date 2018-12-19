@@ -1,6 +1,15 @@
 language: "node_js"
 node_js:
-  - "0.12"
-  - "0.10"
-  - "iojs"
+  - "8"
+  - "10"
 
+jobs:
+  include:
+    -
+      stage: test
+      name: Running tests
+      script: npm run test
+    -
+      stage: test
+      name: Linting files
+      script: npm run lint

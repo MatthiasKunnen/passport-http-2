@@ -2,13 +2,21 @@
     "name": "passport-http-2",
     "version": "0.3.0",
     "description": "HTTP Basic and Digest authentication strategies for Passport.",
-    "keywords": ["passport", "http", "basic", "digest", "auth", "authn", "authentication"],
+    "keywords": [
+        "passport",
+        "http",
+        "basic",
+        "digest",
+        "auth",
+        "authn",
+        "authentication"
+    ],
     "repository": {
         "type": "git",
         "url": "git://github.com/MatthiasKunnen/passport-http-2.git"
     },
     "bugs": {
-         "url": "http://github.com/MatthiasKunnen/passport-http-2/issues"
+        "url": "http://github.com/MatthiasKunnen/passport-http-2/issues"
     },
     "author": "Matthias Kunnen",
     "licenses": [
@@ -22,10 +30,14 @@
         "passport-strategy": "1.x.x"
     },
     "devDependencies": {
+        "eslint": "^5.10.0",
         "vows": "0.8.x"
     },
     "scripts": {
+        "lint": "eslint './lib/**/*.js' './test/**/*.js'",
         "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js"
     },
-    "engines": { "node": ">= 0.4.0" }
+    "engines": {
+        "node": ">= 8.0.0"
+    }
 }

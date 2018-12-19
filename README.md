@@ -1,6 +1,7 @@
 # Passport-HTTP
 
-HTTP Basic and Digest authentication strategies for [Passport](https://github.com/jaredhanson/passport).
+HTTP Basic and Digest authentication strategies for
+[Passport](https://github.com/jaredhanson/passport).
 
 This module lets you authenticate HTTP requests using the standard basic and
 digest schemes in your Node.js applications.  By plugging into Passport, support
@@ -50,7 +51,8 @@ app.get('/private',
 
 #### Examples
 
-For a complete, working example, refer to the [Basic example](https://github.com/passport/express-3.x-http-basic-example).
+For a complete, working example, refer to the
+[Basic example](https://github.com/passport/express-3.x-http-basic-example).
 
 ## Usage of HTTP Digest
 
@@ -89,16 +91,18 @@ require session support, so the `session` option can be set to `false`.
 
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
-
-    app.get('/private', 
-        passport.authenticate('digest', { session: false }),
-        function(req, res) {
-            res.json(req.user);
-        });
+```js
+app.get('/private',
+    passport.authenticate('digest', { session: false }),
+    function(req, res) {
+        res.json(req.user);
+    });
+```
 
 #### Examples
 
-For a complete, working example, refer to the [Digest example](https://github.com/passport/express-3.x-http-digest-example).
+For a complete, working example, refer to the
+[Digest example](https://github.com/passport/express-3.x-http-digest-example).
 
 ## Forked
 This library was forked from <https://github.com/jaredhanson/passport-http>.

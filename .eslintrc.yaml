@@ -1,0 +1,36 @@
+---
+env:
+  node: true
+
+extends:
+  - eslint:recommended
+
+parserOptions:
+  ecmaVersion: 2017
+
+root: true
+
+rules:
+  comma-dangle:
+    - error
+    - always-multiline
+  indent:
+    - error
+    - 4
+  no-multi-spaces: error
+  no-unused-vars:
+    - error
+    -
+      args: none
+      vars: all
+  no-var: error
+  one-var:
+    - error
+    - never
+  one-var-declaration-per-line: error
+  prefer-arrow-callback:
+    - error
+    -
+      allowUnboundThis: true
+  prefer-const: error
+  semi-spacing: error
