@@ -21,14 +21,14 @@ password.  The strategy requires a `verify` callback, which accepts these
 credentials and calls `done` providing a user.
 
     passport.use(new BasicStrategy(
-      function(userid, password, done) {
-        User.findOne({ username: userid }, function (err, user) {
-          if (err) { return done(err); }
-          if (!user) { return done(null, false); }
-          if (!user.verifyPassword(password)) { return done(null, false); }
-          return done(null, user);
-        });
-      }
+        function(userid, password, done) {
+            User.findOne({ username: userid }, function (err, user) {
+                if (err) { return done(err); }
+                if (!user) { return done(null, false); }
+                if (!user.verifyPassword(password)) { return done(null, false); }
+                return done(null, user);
+            });
+        }
     ));
 
 #### Authenticate Requests
@@ -41,10 +41,10 @@ For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
     app.get('/private', 
-      passport.authenticate('basic', { session: false }),
-      function(req, res) {
-        res.json(req.user);
-      });
+        passport.authenticate('basic', { session: false }),
+        function(req, res) {
+            res.json(req.user);
+        });
 
 #### Examples
 
@@ -65,17 +65,17 @@ nonce-related `params` that can be further inspected to determine if the request
 is valid.
 
     passport.use(new DigestStrategy({ qop: 'auth' },
-      function(username, done) {
-        User.findOne({ username: username }, function (err, user) {
-          if (err) { return done(err); }
-          if (!user) { return done(null, false); }
-          return done(null, user, user.password);
-        });
-      },
-      function(params, done) {
-        // validate nonces as necessary
-        done(null, true)
-      }
+        function(username, done) {
+            User.findOne({ username: username }, function (err, user) {
+                if (err) { return done(err); }
+                if (!user) { return done(null, false); }
+                return done(null, user, user.password);
+            });
+        },
+        function(params, done) {
+            // validate nonces as necessary
+            done(null, true)
+        }
     ));
 
 #### Authenticate Requests
@@ -88,10 +88,10 @@ For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
     app.get('/private', 
-      passport.authenticate('digest', { session: false }),
-      function(req, res) {
-        res.json(req.user);
-      });
+        passport.authenticate('digest', { session: false }),
+        function(req, res) {
+            res.json(req.user);
+        });
 
 #### Examples
 
