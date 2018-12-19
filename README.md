@@ -23,16 +23,19 @@ The HTTP Basic authentication strategy authenticates users using a userid and
 password.  The strategy requires a `verify` callback, which accepts these
 credentials and calls `done` providing a user.
 ```js
-passport.use(new BasicStrategy(
-    function(userid, password, done) {
-        User.findOne({ username: userid }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) { return done(null, false); }
-            if (!user.verifyPassword(password)) { return done(null, false); }
-            return done(null, user);
-        });
-    }
-));
+passport.use(new BasicStrategy((userid, password, done) => {
+    User.findOne({username: userid}, (err, user) => {
+        if (err) {
+            return done(err);
+        }
+
+        if (!user || !user.isPasswordValid(password)) {
+            return done(null, false);
+        }
+
+        return done(null, user);
+    });
+}));
 ```
 
 #### Authenticate Requests
@@ -44,11 +47,9 @@ require session support, so the `session` option can be set to `false`.
 For example, as route middleware in an [Express](https://expressjs.com/)
 application:
 ```js
-app.get('/private',
-    passport.authenticate('basic', { session: false }),
-    function(req, res) {
-        res.json(req.user);
-    });
+app.get('/private', passport.authenticate('basic', {session: false}), (req, res) => {
+    res.json(req.user)
+});
 ```
 
 #### Examples
@@ -70,15 +71,22 @@ The strategy also accepts an optional `validate` callback, which receives
 nonce-related `params` that can be further inspected to determine if the request
 is valid.
 ```js
-passport.use(new DigestStrategy({ qop: 'auth' },
-    function(username, done) {
-        User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) { return done(null, false); }
+passport.use(new DigestStrategy(
+    {qop: 'auth'},
+    (username, done) => {
+        User.findOne({username: username}, (err, user) => {
+            if (err) {
+                return done(err);
+            }
+
+            if (!user) {
+                return done(null, false);
+            }
+
             return done(null, user, user.password);
         });
     },
-    function(params, done) {
+    (params, done) => {
         // validate nonces as necessary
         done(null, true)
     }
