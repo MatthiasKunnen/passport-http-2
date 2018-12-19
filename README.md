@@ -1,4 +1,9 @@
-# Passport-HTTP
+# Passport-HTTP-2
+
+[![npm version](https://img.shields.io/npm/v/passport-http-2.svg)
+](https://www.npmjs.com/package/passport-http-2)
+[![Build Status](https://travis-ci.com/MatthiasKunnen/passport-http-2.svg?branch=master)
+](https://travis-ci.com/MatthiasKunnen/passport-http-2)
 
 HTTP Basic and Digest authentication strategies for
 [Passport](https://github.com/jaredhanson/passport).
