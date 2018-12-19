@@ -15,7 +15,7 @@ vows.describe('DigestStrategy').addBatch({
         },
 
         'should be named digest': function (strategy) {
-            assert.equal(strategy.name, 'digest');
+            assert.strictEqual(strategy.name, 'digest');
         },
     },
 
@@ -55,7 +55,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
@@ -137,7 +137,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
@@ -178,7 +178,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
@@ -216,7 +216,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
@@ -257,7 +257,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
@@ -306,12 +306,12 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
 
-    'strategy handling a valid request with qop set to "auth" and equal sign in URL': {
+    'strategy handling a valid request with qop set to "auth" and strictEqual sign in URL': {
         topic: function () {
             return new DigestStrategy({qop: 'auth'},
                 ((username, done) => {
@@ -354,12 +354,12 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
 
-    'strategy handling a valid request with credentials not separated by spaces with qop set to "auth" and equal sign in URL': {
+    'strategy handling a valid request with credentials not separated by spaces with qop set to "auth" and strictEqual sign in URL': {
         topic: function () {
             return new DigestStrategy({qop: 'auth'},
                 ((username, done) => {
@@ -402,7 +402,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
@@ -443,7 +443,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },
@@ -815,7 +815,7 @@ vows.describe('DigestStrategy').addBatch({
             'should fail authentication with 400 Bad Request': function (err, status) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(status, 400);
+                assert.strictEqual(status, 400);
             },
         },
     },
@@ -855,7 +855,7 @@ vows.describe('DigestStrategy').addBatch({
             'should fail authentication with 400 Bad Request': function (err, status) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(status, 400);
+                assert.strictEqual(status, 400);
             },
         },
     },
@@ -895,7 +895,7 @@ vows.describe('DigestStrategy').addBatch({
             'should fail authentication with 400 Bad Request': function (err, status) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(status, 400);
+                assert.strictEqual(status, 400);
             },
         },
     },
@@ -935,7 +935,7 @@ vows.describe('DigestStrategy').addBatch({
             'should fail authentication with 400 Bad Request': function (err, status) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(status, 400);
+                assert.strictEqual(status, 400);
             },
         },
     },
@@ -975,7 +975,7 @@ vows.describe('DigestStrategy').addBatch({
             'should fail authentication with 400 Bad Request': function (err, status) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(status, 400);
+                assert.strictEqual(status, 400);
             },
         },
     },
@@ -1016,7 +1016,7 @@ vows.describe('DigestStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
+                assert.strictEqual(user.username, 'bob');
             },
         },
     },

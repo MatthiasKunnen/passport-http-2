@@ -10,7 +10,7 @@ vows.describe('BasicStrategy').addBatch({
         },
 
         'should be named basic': function (strategy) {
-            assert.equal(strategy.name, 'basic');
+            assert.strictEqual(strategy.name, 'basic');
         },
     },
 
@@ -43,8 +43,8 @@ vows.describe('BasicStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
-                assert.equal(user.password, 'secret');
+                assert.strictEqual(user.username, 'bob');
+                assert.strictEqual(user.password, 'secret');
             },
         },
     },
@@ -77,7 +77,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 'Basic realm="Users"');
+                assert.strictEqual(challenge, 'Basic realm="Users"');
             },
         },
     },
@@ -146,7 +146,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 'Basic realm="Users"');
+                assert.strictEqual(challenge, 'Basic realm="Users"');
             },
         },
     },
@@ -179,7 +179,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 'Basic realm="Users"');
+                assert.strictEqual(challenge, 'Basic realm="Users"');
             },
         },
     },
@@ -212,7 +212,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 'Basic realm="Users"');
+                assert.strictEqual(challenge, 'Basic realm="Users"');
             },
         },
     },
@@ -245,7 +245,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 'Basic realm="Users"');
+                assert.strictEqual(challenge, 'Basic realm="Users"');
             },
         },
     },
@@ -278,7 +278,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 400);
+                assert.strictEqual(challenge, 400);
             },
         },
     },
@@ -311,7 +311,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 400);
+                assert.strictEqual(challenge, 400);
             },
         },
     },
@@ -345,8 +345,8 @@ vows.describe('BasicStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
-                assert.equal(user.password, 'secret');
+                assert.strictEqual(user.username, 'bob');
+                assert.strictEqual(user.password, 'secret');
             },
         },
     },
@@ -379,7 +379,7 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': (err, challenge) => {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.equal(challenge, 'Basic realm="Administrators"');
+                assert.strictEqual(challenge, 'Basic realm="Administrators"');
             },
         },
     },
@@ -422,8 +422,8 @@ vows.describe('BasicStrategy').addBatch({
                 assert.isNull(err);
             },
             'should authenticate': function (err, user) {
-                assert.equal(user.username, 'bob');
-                assert.equal(user.password, 'secret');
+                assert.strictEqual(user.username, 'bob');
+                assert.strictEqual(user.password, 'secret');
             },
         },
     },
