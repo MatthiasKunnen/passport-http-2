@@ -11,7 +11,9 @@ middleware, including [Express](https://expressjs.com/).
 
 ## Install
 
-    $ npm install passport-http
+```bash
+npm install passport-http-2
+```
 
 ## Usage of HTTP Basic
 
