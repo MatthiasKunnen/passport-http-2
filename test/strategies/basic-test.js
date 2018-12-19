@@ -1,6 +1,6 @@
 const vows = require('vows');
 const assert = require('assert');
-const BasicStrategy = require('passport-http/strategies/basic');
+const BasicStrategy = require('../../lib/strategies/basic');
 
 vows.describe('BasicStrategy').addBatch({
     'strategy': {

@@ -1,9 +1,8 @@
 const vows = require('vows');
 const assert = require('assert');
-const http = require('passport-http');
+const http = require('../lib');
 
-
-vows.describe('passport-http').addBatch({
+vows.describe('main').addBatch({
 
     'module': {
         'should export BasicStrategy': () => {
