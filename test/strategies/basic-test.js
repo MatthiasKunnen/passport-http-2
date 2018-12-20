@@ -179,7 +179,7 @@ vows.describe('BasicStrategy').addBatch({
         },
     },
 
-    'strategy handling a request with credentials lacking a password': {
+    'strategy handling a request with credentials lacking the " " separator': {
         topic: function () {
             return new BasicStrategy(((userid, password, done) => {
                 done(null, {username: userid, password: password});
@@ -197,7 +197,7 @@ vows.describe('BasicStrategy').addBatch({
                 };
 
                 req.headers = {};
-                req.headers.authorization = 'Basic Ym9iOg==';
+                req.headers.authorization = 'Basic';
                 process.nextTick(() => {
                     strategy.authenticate(req);
                 });
@@ -206,12 +206,12 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.strictEqual(challenge, 'Basic realm="Users"');
+                assert.strictEqual(challenge, 400);
             },
         },
     },
 
-    'strategy handling a request with credentials lacking a username': {
+    'strategy handling a request with credentials containing an empty user-pass': {
         topic: function () {
             return new BasicStrategy(((userid, password, done) => {
                 done(null, {username: userid, password: password});
@@ -229,7 +229,7 @@ vows.describe('BasicStrategy').addBatch({
                 };
 
                 req.headers = {};
-                req.headers.authorization = 'Basic OnNlY3JldA==';
+                req.headers.authorization = 'Basic ';
                 process.nextTick(() => {
                     strategy.authenticate(req);
                 });
@@ -238,7 +238,139 @@ vows.describe('BasicStrategy').addBatch({
             'should fail authentication with challenge': function (err, challenge) {
                 // fail action was called, resulting in test callback
                 assert.isNull(err);
-                assert.strictEqual(challenge, 'Basic realm="Users"');
+                assert.strictEqual(challenge, 400);
+            },
+        },
+    },
+
+    'strategy handling a request with credentials lacking the ":" separator': {
+        topic: function () {
+            return new BasicStrategy(((userid, password, done) => {
+                done(null, {username: userid, password: password});
+            }));
+        },
+
+        'after augmenting with actions': {
+            topic: function (strategy) {
+                const req = {};
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
+                };
+                strategy.fail = (challenge) => {
+                    this.callback(null, challenge);
+                };
+
+                req.headers = {};
+                req.headers.authorization = 'Basic Ym9i'; // bob
+                process.nextTick(() => {
+                    strategy.authenticate(req);
+                });
+            },
+
+            'should fail authentication with challenge': function (err, challenge) {
+                // fail action was called, resulting in test callback
+                assert.isNull(err);
+                assert.strictEqual(challenge, 400);
+            },
+        },
+    },
+
+    'strategy handling a request with credentials containing an empty username': {
+        topic: function () {
+            return new BasicStrategy(((userid, password, done) => {
+                done(null, {username: userid, password: password});
+            }));
+        },
+
+        'after augmenting with actions': {
+            topic: function (strategy) {
+                const req = {};
+                strategy.success = (user) => {
+                    this.callback(null, user);
+                };
+                strategy.fail = (challenge) => {
+                    this.callback(new Error('should not be called'));
+                };
+
+                req.headers = {};
+                req.headers.authorization = 'Basic OnBhc3N3b3Jk'; // :password
+                process.nextTick(() => {
+                    strategy.authenticate(req);
+                });
+            },
+
+            'should not generate an error': (err, user) => {
+                assert.isNull(err);
+            },
+            'should authenticate': (err, user) => {
+                assert.strictEqual(user.username, '');
+                assert.strictEqual(user.password, 'password');
+            },
+        },
+    },
+
+    'strategy handling a request with credentials containing an empty password': {
+        topic: function () {
+            return new BasicStrategy(((userid, password, done) => {
+                done(null, {username: userid, password: password});
+            }));
+        },
+
+        'after augmenting with actions': {
+            topic: function (strategy) {
+                const req = {};
+                strategy.success = (user) => {
+                    this.callback(null, user);
+                };
+                strategy.fail = (challenge) => {
+                    this.callback(new Error('should not be called'));
+                };
+
+                req.headers = {};
+                req.headers.authorization = 'Basic Ym9iOg=='; // bob:
+                process.nextTick(() => {
+                    strategy.authenticate(req);
+                });
+            },
+
+            'should not generate an error': (err, user) => {
+                assert.isNull(err);
+            },
+            'should authenticate': (err, user) => {
+                assert.strictEqual(user.username, 'bob');
+                assert.strictEqual(user.password, '');
+            },
+        },
+    },
+
+    'strategy handling a request containing a colon in the password': {
+        topic: function () {
+            return new BasicStrategy((userid, password, done) => {
+                done(null, {username: userid, password: password});
+            });
+        },
+        'after augmenting with actions': {
+            topic: function (strategy) {
+                const req = {};
+                strategy.success = user => {
+                    this.callback(null, user);
+                };
+                strategy.fail = () => {
+                    this.callback(new Error('should not be called'));
+                };
+
+                req.headers = {};
+                req.headers.authorization = 'Basic Ym9iOnNlY3JldDpwdw=='; // bob:secret:pw
+                process.nextTick(() => {
+                    strategy.authenticate(req);
+                });
+            },
+            'should not generate an error': (err, user) => {
+                assert.isNull(err);
+            },
+            'should authenticate': (err, user) => {
+                assert.strictEqual(user.username, 'bob');
+                assert.strictEqual(user.password, 'secret:pw');
             },
         },
     },
