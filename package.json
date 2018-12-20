@@ -19,12 +19,7 @@
         "url": "http://github.com/MatthiasKunnen/passport-http-2/issues"
     },
     "author": "Matthias Kunnen",
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "http://www.opensource.org/licenses/MIT"
-        }
-    ],
+    "license": "MIT",
     "main": "./lib/index.js",
     "dependencies": {
         "passport-strategy": "1.x.x"
