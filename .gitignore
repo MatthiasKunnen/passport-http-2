@@ -1,6 +1,17 @@
-# Mac OS X
+dist
+
+# System files
 .DS_Store
+.fuse_hidden*
+Thumbs.db
 
 # Node.js
 node_modules
 npm-debug.log
+
+# IDE
+.idea
+.vscode
+
+*.local.*
+*.log

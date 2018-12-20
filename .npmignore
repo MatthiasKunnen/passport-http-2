@@ -1,16 +1,4 @@
-README.md
-Makefile
-doc/
-examples/
-test/
-
-# Mac OS X
+# System files
 .DS_Store
-
-# Node.js
-.npmignore
-node_modules/
-npm-debug.log
-
-# Git
-.git*
+.fuse_hidden*
+Thumbs.db
