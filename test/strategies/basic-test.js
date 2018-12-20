@@ -23,13 +23,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(null, user);
+                strategy.success = (user) => {
+                    this.callback(null, user);
                 };
-                strategy.fail = function () {
-                    self.callback(new Error('should not be called'));
+                strategy.fail = () => {
+                    this.callback(new Error('should not be called'));
                 };
 
                 req.headers = {};
@@ -58,13 +57,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (challenge) {
-                    self.callback(null, challenge);
+                strategy.fail = (challenge) => {
+                    this.callback(null, challenge);
                 };
 
                 req.headers = {};
@@ -91,16 +89,15 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (challenge) {
-                    self.callback(new Error('should not be called'));
+                strategy.fail = (challenge) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.error = function (err) {
-                    self.callback(null, err);
+                strategy.error = (err) => {
+                    this.callback(null, err);
                 };
 
                 req.headers = {};
@@ -128,13 +125,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (challenge) {
-                    self.callback(null, challenge);
+                strategy.fail = (challenge) => {
+                    this.callback(null, challenge);
                 };
 
                 req.headers = {};
@@ -160,13 +156,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (challenge) {
-                    self.callback(null, challenge);
+                strategy.fail = (challenge) => {
+                    this.callback(null, challenge);
                 };
 
                 req.headers = {};
@@ -193,13 +188,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (challenge) {
-                    self.callback(null, challenge);
+                strategy.fail = (challenge) => {
+                    this.callback(null, challenge);
                 };
 
                 req.headers = {};
@@ -226,13 +220,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (challenge) {
-                    self.callback(null, challenge);
+                strategy.fail = (challenge) => {
+                    this.callback(null, challenge);
                 };
 
                 req.headers = {};
@@ -259,13 +252,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (status) {
-                    self.callback(null, status);
+                strategy.fail = (status) => {
+                    this.callback(null, status);
                 };
 
                 req.headers = {};
@@ -292,13 +284,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (status) {
-                    self.callback(null, status);
+                strategy.fail = (status) => {
+                    this.callback(null, status);
                 };
 
                 req.headers = {};
@@ -325,13 +316,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(null, user);
+                strategy.success = (user) => {
+                    this.callback(null, user);
                 };
-                strategy.fail = function () {
-                    self.callback(new Error('should not be called'));
+                strategy.fail = () => {
+                    this.callback(new Error('should not be called'));
                 };
 
                 req.headers = {};
@@ -360,13 +350,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(new Error('should not be called'));
+                strategy.success = (user) => {
+                    this.callback(new Error('should not be called'));
                 };
-                strategy.fail = function (challenge) {
-                    self.callback(null, challenge);
+                strategy.fail = (challenge) => {
+                    this.callback(null, challenge);
                 };
 
                 req.headers = {};
@@ -402,13 +391,12 @@ vows.describe('BasicStrategy').addBatch({
 
         'after augmenting with actions': {
             topic: function (strategy) {
-                const self = this;
                 const req = {};
-                strategy.success = function (user) {
-                    self.callback(null, user);
+                strategy.success = (user) => {
+                    this.callback(null, user);
                 };
-                strategy.fail = function () {
-                    self.callback(new Error('should not be called'));
+                strategy.fail = () => {
+                    this.callback(new Error('should not be called'));
                 };
 
                 req.headers = {};
