@@ -36,7 +36,7 @@ select version_type in "patch" "minor" "major"; do
 
     read -p "Creating commit and tag for a $version_type release ($version). Press [Enter].";
 
-    git add package.json package-lock.json || exit "$?"
+    git add package.json || exit "$?"
     git commit -m "$message" || exit "$?"
 
     tag_args=(
