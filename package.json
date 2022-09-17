@@ -1,6 +1,6 @@
 {
     "name": "passport-http-2",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "HTTP Basic and Digest authentication strategies for Passport.",
     "types": "index.d.ts",
     "keywords": [
