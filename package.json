@@ -33,6 +33,9 @@
         "lint": "eslint './lib/**/*.js' './test/**/*.js'",
         "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js"
     },
+    "files": [
+        "lib"
+    ],
     "engines": {
         "node": ">= 8.0.0"
     }

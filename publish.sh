@@ -57,8 +57,6 @@ select version_type in "patch" "minor" "major"; do
     rm -Rf dist
     mkdir dist || exit "$?"
     echo "Copying all necessary files to dist"
-    cp -r ./lib ./package.json ./.npmignore ./README.md ./dist || exit "$?"
-    cd dist || exit "$?"
 
     read -p "Ready to publish?; [Enter] to continue";
     npm publish || exit "$?"
